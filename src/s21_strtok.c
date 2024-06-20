@@ -1,49 +1,24 @@
-
 #include "s21_string.h"
 
-// Breaks string str into a series of tokens separated by delim
-
 char *s21_strtok(char *str, const char *delim) {
-  static char *tok = S21_NULL;
-  char *start;
+  static char *olds;
+  char *token;
 
-  if (str) {
-    tok = str;
+  if (str == S21_NULL) {
+    str = olds;
   }
-
-  if (tok == S21_NULL) {
-    return S21_NULL;
+  str += s21_strspn(str, delim);
+  if (*str == '\0') {
+    olds = str;
+    return (S21_NULL);
   }
-
-  start = tok + s21_strspn(tok, delim);
-  if (*start == '\0') {
-    tok = S21_NULL;
-    return S21_NULL;
-  }
-
-  tok = start + s21_strcspn(start, delim);
-  if (*tok != '\0') {
-    *tok = '\0';
-    tok++;
+  token = str;
+  str = s21_strpbrk(token, delim);
+  if (str == S21_NULL) {
+    olds = s21_strchr(token, '\0');
   } else {
-    tok = S21_NULL;
+    *str = '\0';
+    olds = str + 1;
   }
-
-  return start;
+  return token;
 }
-
-// int main () {
-//    char str[80] = "hello there awweww";
-//    const char s[2] = " ";
-//    char *token;
-
-//    token = s21_strtok(str, s);
-
-//    while( token != S21_NULL) {
-//       printf(" %s\n", token);
-
-//       token = s21_strtok(S21_NULL, s);
-//    }
-
-//    return(0);
-// }
