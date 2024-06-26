@@ -3,15 +3,19 @@ CC = gcc
 CCFLAGS = -Wall -Wextra -Wextra -std=c11
 LDFLAGS = -lcheck -lsubunit -lm
 RM = rm -rf
+BRANCHES = --rc lcov_branch_coverage=1
 
-GCOVR = $(shell which gcovr || echo ~/.local/bin/gcovr) 
+
+# Используйте LCOV для генерации отчетов
+LCOV = $(shell which lcov || echo ~/.local/bin/lcov)
+GHTML = $(shell which genhtml || echo ~/.local/bin/genhtml)
 
 # имя библиотеки
 LIB_NAME = s21_string.a
 # имя тестового файла
 TESTS_NAME = s21_string_test
 # имя тестового файла c тестами покрытия кода gcovr
-TESTS_GCOV_NAME = s21_string_tests_gcov
+TESTS_LCOV_NAME = s21_string_tests_gcov
 
 # файлы и директории функций библиотек
 DIR = ./
@@ -39,8 +43,8 @@ $(LIB_NAME):$(OBJECTS)
 test:clean $(TESTS_NAME)
 	./$(TESTS_NAME)
 
-$(TESTS_NAME):$(TEST_OBJ) $(LIB_NAME)
-	$(CC) $(CCFLAGS) $^ -L. -L/usr/local/lib -L/usr/include -l:s21_string.a -o $@ $(LDFLAGS)
+$(TESTS_NAME): $(TEST_OBJ) $(LIB_NAME)
+	$(CC) $(CCFLAGS) $^ -L. -L/usr/local/lib -L/usr/include -l:$(LIB_NAME) -o $@ $(LDFLAGS)
 
 gcov_report:clean_gcov clean_report $(TESTS_GCOV_NAME)
 	./$(TESTS_GCOV_NAME)
@@ -65,3 +69,6 @@ clean_gcov:
 	$(RM) $(TESTS_GCOV_NAME)
 	$(RM) *.gcda
 	$(RM) *.gcno
+
+val: clean $(TESTS_NAME)
+	valgrind --tool=memcheck --leak-check=yes --quiet ./$(TESTS_NAME)

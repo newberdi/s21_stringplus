@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include "s21_string.h"
 
 // Returns a copy of string (str) converted to uppercase.

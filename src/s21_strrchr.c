@@ -10,11 +10,11 @@ char *s21_strrchr(const char *str, int c) {
 
   while (*tmp != '\0') tmp++;
 
-  for (; len > 0 && *tmp != c; len--) {
+  for (; len > 0 && *tmp != (char)c; len--) {
     tmp--;
   }
 
-  if (len == 0 && *tmp != c) tmp = S21_NULL;
+  if (len == 0 && *tmp != (char)c) tmp = S21_NULL;
 
   return tmp;
 }

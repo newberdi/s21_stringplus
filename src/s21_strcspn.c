@@ -5,15 +5,14 @@
 
 s21_size_t s21_strcspn(const char *str1, const char *str2) {
   s21_size_t result = 0;
-  int flag = 0;
-  int len1 = s21_strlen(str1);
-  int len2 = s21_strlen(str2);
-  for (int i = 0; (i < len1) && !flag; i++, result++) {
-    for (int j = 0; (j < len2) && !flag; j++) {
-      if (str1[i] == str2[j]) {
-        flag++;
-      }
-    }
+  int flag = 1;
+
+  for (int i = 0; str1[0] != '\0' && flag; i++) {
+    if (s21_strchr(str2, str1[i]) == S21_NULL)
+      result++;
+    else
+      flag = 0;
   }
-  return (result - 1);
+
+  return result;
 }

@@ -7,8 +7,7 @@
 // needle - указатель на подстроку
 
 char *s21_strstr(const char *haystack, const char *needle) {
-  // if (needle == NULL)
-  //     return (char *)haystack;
+  if (s21_strlen(needle) == 0) return (char *)haystack;
 
   char *s21_haystack = (char *)haystack;
   char *s21_needle = (char *)needle;

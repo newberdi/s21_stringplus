@@ -1,22 +1,25 @@
-#include "s21_string.h"
+#include <stdlib.h>
 
+#include "s21_string.h"
 // Returns a copy of string (str) converted to lowercase.
 // In case of any error, return NULL
 
 void *s21_to_lower(const char *str) {
-  char *result = S21_NULL;
+  if (str == S21_NULL) return S21_NULL;
 
-  if (str != S21_NULL) {
-    s21_size_t length = s21_strlen(str);
-    result = (char *)calloc(length + 1, sizeof(char));
+  char *tmp = (char *)str;
 
-    for (s21_size_t i = 0; *str != '\0'; i++, str++) {
-      if (*str >= 'a' && *str <= 'z') {
-        result[i] = *str + 32;
-      } else {
-        result[i] = *str;
-      }
+  char *copy = calloc(s21_strlen(str) + 1, sizeof(char));
+  char *res = copy;
+
+  for (; *tmp != '\0'; tmp++) {
+    if (*tmp >= 'A' && *tmp <= 'Z') {
+      *copy = *tmp + 32;
+    } else {
+      *copy = *tmp;
     }
+    copy++;
   }
-  return result;
+
+  return (void *)res;
 }

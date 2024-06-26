@@ -49,8 +49,6 @@ Suite *s21_strpbrk_suite();
 Suite *s21_strerror_suite();
 // Suite *s21_sprintf_suite();
 
-// Suite *s21_all_2_suite();
-void run_tests(void);
-void run_testcase(Suite *testcase);
+Suite *s21_all_2_suite();
 
 #endif

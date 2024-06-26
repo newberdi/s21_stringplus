@@ -8,5 +8,6 @@ char *s21_strncpy(char *dest, const char *src, s21_size_t n) {
     dest[c] = src[c];
     c++;
   }
+  dest[c] = '\0';
   return dest;
 }
