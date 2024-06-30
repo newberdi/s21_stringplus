@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "../tests/s21_test.h"
 
 static char* memchr_array[21][3] = {{"123\0 y56", "y", "10"},
                                     {"123", "", "10"},

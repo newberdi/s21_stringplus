@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "../tests/s21_test.h"
 
 static char* strlen_array[] = {"123",  "gwevwe",        "",
                                "1230", "qrqwr/0",       "qwqwrwq\0sdsds",

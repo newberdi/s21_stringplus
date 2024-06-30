@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "../tests/s21_test.h"
 
 static char* strtok_array[16][3] = {{"123 4646 rwrgw 4", " ", "1"},
                                     {" 123 4646 rwrgw 4", " ", "2"},

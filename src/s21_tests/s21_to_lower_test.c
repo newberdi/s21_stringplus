@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "../tests/s21_test.h"
 
 static char* to_lower_array[8][3] = {
     {"SOME-TEXT", "some-text", ""},

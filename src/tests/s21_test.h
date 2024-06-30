@@ -51,4 +51,25 @@ Suite *s21_trim_suite();
 
 Suite *s21_all_2_suite();
 
+Suite *suite_memchr_1();
+Suite *suite_memcmp_1();
+Suite *suite_memcpy_1();
+Suite *suite_memset_1();
+Suite *suite_strncat_1();
+Suite *suite_strchr_1();
+Suite *suite_strerror_1();
+Suite *suite_strpbrk_1();
+Suite *suite_strrchr_1();
+Suite *suite_strstr_1();
+Suite *suite_strtok_1();
+Suite *suite_strlen_1();
+Suite *suite_strcspn_1();
+Suite *suite_strncmp_1();
+Suite *suite_strncpy_1();
+
+Suite *suite_to_upper_1();
+Suite *suite_to_lower_1();
+Suite *suite_insert_1();
+Suite *suite_trim_1();
+
 #endif

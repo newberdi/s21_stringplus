@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "../tests/s21_test.h"
 
 static char *memcmp_array[32][3] = {{"\0\0", "1", "2"},
                                     {"\0\0", "1\0", "3"},

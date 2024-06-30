@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "../tests/s21_test.h"
 
 char* strcspn_array[13][2] = {{"123", "13"},
                               {"gwevwe", "ve"},

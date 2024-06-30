@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "../tests/s21_test.h"
 
 static char* strncpy_array[10][2] = {
     {"123", "2"},     {"gwevwe", "3"},        {"asda", "2"},

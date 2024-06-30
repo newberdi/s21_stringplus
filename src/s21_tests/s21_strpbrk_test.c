@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "../tests/s21_test.h"
 
 static char* strpbrk_array[11][2] = {{"1239", "973"},
                                      {"1239", "397"},

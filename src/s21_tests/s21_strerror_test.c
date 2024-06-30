@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "../tests/s21_test.h"
 
 static char* strerror_array[] = {"1",  "67",  "",    "133",
                                  "25", "-20", "140", NULL};

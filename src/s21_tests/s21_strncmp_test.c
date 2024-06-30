@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "../tests/s21_test.h"
 
 static char* strncmp_array[12][3] = {{"123", "123", "2"},
                                      {"gwevwe", "gwe", "3"},

@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "../tests/s21_test.h"
 
 static char* memcpy_array[8][2] = {
     {"123", "2"},           {"gwevwe", "3"},  {"asda", "2"},

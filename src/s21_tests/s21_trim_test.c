@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "../tests/s21_test.h"
 
 static char *trim_array[8][4] = {{NULL, " ", NULL, ""},
                                  {"qwerty", NULL, "qwerty", ""},

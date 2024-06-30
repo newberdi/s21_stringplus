@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "../tests/s21_test.h"
 
 static char* strrchr_array[11][2] = {
     {"1232324", "2"}, {"16232324", "6"}, {"gwevwe", "e"},  {"asda", "q"},

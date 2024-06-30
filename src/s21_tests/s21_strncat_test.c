@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "../tests/s21_test.h"
 
 static char* strncat_array[30][3] = {
     {"123", "4567", "2"},    {"123", "4567", "3"},

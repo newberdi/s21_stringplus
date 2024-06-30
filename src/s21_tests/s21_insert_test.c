@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "../tests/s21_test.h"
 
 static char *insert_array[15][5] = {
     {"", "123", "0", "123", ""},

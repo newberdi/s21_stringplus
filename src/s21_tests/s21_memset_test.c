@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "../tests/s21_test.h"
 
 static char* memset_array[11][3] = {
     {"123", "3", "2"},       {"gwevwe", "g", "3"},  {"", "s", "2"},

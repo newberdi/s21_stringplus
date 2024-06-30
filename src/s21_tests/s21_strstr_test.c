@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "../tests/s21_test.h"
 
 static char* strstr_array[11][2] = {{"123", "23"},
                                     {"g99hnwdwqewevwe", "we"},
