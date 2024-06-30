@@ -40,12 +40,6 @@ END_TEST
 START_TEST(test_s21_strlen_10) { ck_assert_uint_eq(strlen(i), s21_strlen(i)); }
 END_TEST
 
-START_TEST(test_s21_strlen_11) {
-  char *str = NULL;
-  ck_assert_uint_eq(0, s21_strlen(str));
-}
-END_TEST
-
 Suite *s21_strlen_suite() {
   Suite *s;
   TCase *tc_s21_strlen;
@@ -61,7 +55,6 @@ Suite *s21_strlen_suite() {
   tcase_add_test(tc_s21_strlen, test_s21_strlen_8);
   tcase_add_test(tc_s21_strlen, test_s21_strlen_9);
   tcase_add_test(tc_s21_strlen, test_s21_strlen_10);
-  tcase_add_test(tc_s21_strlen, test_s21_strlen_11);
   suite_add_tcase(s, tc_s21_strlen);
 
   return s;

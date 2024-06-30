@@ -3,26 +3,24 @@
 // Finds the first occurrence of the entire string needle (not including the
 // null) which appears in the string haystack
 
-// haystack - входная строка в которой будет поиск подстроки
-// needle - указатель на подстроку
-
 char *s21_strstr(const char *haystack, const char *needle) {
-  if (s21_strlen(needle) == 0) return (char *)haystack;
-
-  char *s21_haystack = (char *)haystack;
-  char *s21_needle = (char *)needle;
-
   char *first_entry = S21_NULL;
-
-  for (; *s21_haystack != '\0' && *s21_needle != '\0'; s21_haystack++) {
-    if (*s21_haystack == *s21_needle) {
-      if (first_entry == S21_NULL) first_entry = s21_haystack;
-      s21_needle++;
-    } else {
-      first_entry = S21_NULL;
-      s21_needle = (char *)needle;
+  s21_size_t haystack_len = s21_strlen(haystack);
+  s21_size_t needle_len = s21_strlen(needle);
+  if (haystack_len >= needle_len) {
+    for (s21_size_t i = 0; i <= haystack_len; i++) {
+      int match = 1;
+      for (s21_size_t j = 0; j < needle_len; j++) {
+        if (haystack[i + j] != needle[j]) {
+          match = 0;
+          break;
+        }
+      }
+      if (match == 1) {
+        first_entry = (char *)haystack + i;
+        break;
+      }
     }
   }
-
   return first_entry;
 }

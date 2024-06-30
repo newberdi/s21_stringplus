@@ -107,6 +107,18 @@ START_TEST(test_s21_strncmp_9) {
 }
 END_TEST
 
+START_TEST(test_s21_strncmp_10) {
+  char s1[] = "вфвф урй";
+  char s2[] = "вфвф урй";
+  s21_size_t n = 10;
+  int n1 = strncmp(s1, s2, n);
+  n1 = n1 > 0 ? 1 : n1 == 0 ? 0 : -1;
+  int n2 = s21_strncmp(s1, s2, n);
+  n2 = n2 > 0 ? 1 : n2 == 0 ? 0 : -1;
+  ck_assert_int_eq(n1, n2);
+}
+END_TEST
+
 Suite *s21_strncmp_suite() {
   Suite *s;
   TCase *tc_s21_strncmp;
@@ -121,7 +133,7 @@ Suite *s21_strncmp_suite() {
   tcase_add_test(tc_s21_strncmp, test_s21_strncmp_7);
   tcase_add_test(tc_s21_strncmp, test_s21_strncmp_8);
   tcase_add_test(tc_s21_strncmp, test_s21_strncmp_9);
-  // tcase_add_test(tc_s21_strncmp, test_s21_strncmp_10);
+  tcase_add_test(tc_s21_strncmp, test_s21_strncmp_10);
   suite_add_tcase(s, tc_s21_strncmp);
 
   return s;

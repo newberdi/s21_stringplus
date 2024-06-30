@@ -27,11 +27,6 @@
 // Suite *test_sscanf_real();
 // Suite *test_sscanf_empty();
 
-Suite *s21_to_upper_suite();
-Suite *s21_to_lower_suite();
-Suite *s21_insert_suite();
-Suite *s21_trim_suite();
-
 Suite *s21_strlen_suite();
 Suite *s21_memchr_suite();
 Suite *s21_memcmp_suite();
@@ -48,6 +43,11 @@ Suite *s21_strstr_suite();
 Suite *s21_strpbrk_suite();
 Suite *s21_strerror_suite();
 // Suite *s21_sprintf_suite();
+
+Suite *s21_to_upper_suite();
+Suite *s21_to_lower_suite();
+Suite *s21_insert_suite();
+Suite *s21_trim_suite();
 
 Suite *s21_all_2_suite();
 

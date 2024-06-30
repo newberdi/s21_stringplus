@@ -47,8 +47,7 @@ END_TEST
 START_TEST(test_s21_strncat_6) {
   char s1[100] = "Hello, world!";
   char s2[100] = "Hello, world!";
-  char s3[] =
-      "My name is Polina. I hate this, maybe I'm not supposed for this.";
+  char s3[] = "My name is Aboba. I love this, it's my jam.";
   s21_size_t n = 6;
   ck_assert_pstr_eq(strncat(s1, s3, n), s21_strncat(s2, s3, n));
 }
@@ -66,7 +65,7 @@ END_TEST
 START_TEST(test_s21_strncat_8) {
   char s1[100] = "Hello, world!";
   char s2[100] = "Hello, world!";
-  char s3[] = "My name is Polina.";
+  char s3[] = "My name is Aboba.";
   s21_size_t n = 2;
   ck_assert_pstr_eq(strncat(s1, s3, n), s21_strncat(s2, s3, n));
 }
@@ -84,7 +83,7 @@ END_TEST
 START_TEST(test_s21_strncat_10) {
   char s1[100] = "Hello\0, world!";
   char s2[100] = "Hello\0, world!";
-  char s3[] = "My name is\0 Polina.";
+  char s3[] = "My name is\0 Aboba.";
   s21_size_t n = 15;
   ck_assert_pstr_eq(strncat(s1, s3, n), s21_strncat(s2, s3, n));
 }
@@ -129,7 +128,7 @@ END_TEST
 START_TEST(test_s21_strncat_15) {
   char s1[100] = "Hello, world!\0\0\0";
   char s2[100] = "Hello, world!\0\0\0";
-  char s3[] = "My name is Polina.";
+  char s3[] = "My name is Aboba.";
   s21_size_t n = 0;
   ck_assert_pstr_eq(strncat(s1, s3, n), s21_strncat(s2, s3, n));
 }

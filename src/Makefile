@@ -25,7 +25,7 @@ OBJECTS = $(SOURCES:.c=.o)
 
 # файлы и директории тестов
 TEST_DIR = tests/
-TEST_HEADER_NAME := s21_tests.h
+TEST_HEADER_NAME := s21_test.h
 TEST_SRC = $(shell find $(TEST_DIR) -name "*.c")
 TEST_OBJ = $(TEST_SRC:.c=.o)
 

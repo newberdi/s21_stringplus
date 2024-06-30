@@ -81,9 +81,7 @@ Suite *s21_strncpy_suite() {
   tcase_add_test(tc_s21_strncpy, test_s21_strncpy_5);
   tcase_add_test(tc_s21_strncpy, test_s21_strncpy_6);
   tcase_add_test(tc_s21_strncpy, test_s21_strncpy_7);
-  // tcase_add_test(tc_s21_strncpy, test_s21_strncpy_8);
-  // tcase_add_test(tc_s21_strncpy, test_s21_strncpy_9);
-  // tcase_add_test(tc_s21_strncpy, test_s21_strncpy_10);
+
   suite_add_tcase(s, tc_s21_strncpy);
 
   return s;
