@@ -1,7 +1,8 @@
 
 CC = gcc
-CCFLAGS = -Wall -Wextra -Wextra -std=c11
+CCFLAGS = -Wall -Wextra -Wextra -g -std=c11
 LDFLAGS = -lcheck -lsubunit -lm
+GCOV_FLAGS = -fprofile-arcs -ftest-coverage
 RM = rm -rf
 BRANCHES = --rc lcov_branch_coverage=1
 
@@ -14,8 +15,8 @@ GHTML = $(shell which genhtml || echo ~/.local/bin/genhtml)
 LIB_NAME = s21_string.a
 # имя тестового файла
 TESTS_NAME = s21_string_test
-# имя тестового файла c тестами покрытия кода gcovr
-TESTS_LCOV_NAME = s21_string_tests_gcov
+# # имя тестового файла c тестами покрытия кода gcovr
+# TESTS_LCOV_NAME = s21_string_tests_gcov
 
 # файлы и директории функций библиотек
 DIR = ./
@@ -24,7 +25,7 @@ SOURCES = $(shell find $(DIR) -name "*.c")
 OBJECTS = $(SOURCES:.c=.o)
 
 # файлы и директории тестов
-TEST_DIR = tests/
+TEST_DIR = tests/ s21_tests/
 TEST_HEADER_NAME := s21_test.h
 TEST_SRC = $(shell find $(TEST_DIR) -name "*.c")
 TEST_OBJ = $(TEST_SRC:.c=.o)
@@ -40,23 +41,23 @@ $(LIB_NAME):$(OBJECTS)
 %.o:%.c
 	$(CC) $(CCFLAGS) -c $< -o $@
 
-test:clean $(TESTS_NAME)
+test: clean $(TESTS_NAME)
 	./$(TESTS_NAME)
 
 $(TESTS_NAME): $(TEST_OBJ) $(LIB_NAME)
 	$(CC) $(CCFLAGS) $^ -L. -L/usr/local/lib -L/usr/include -l:$(LIB_NAME) -o $@ $(LDFLAGS)
 
-gcov_report:clean_gcov clean_report $(TESTS_GCOV_NAME)
-	./$(TESTS_GCOV_NAME)
-	mkdir report
-	$(GCOVR) -r . --html --html-details -o report/coverage.html --exclude=$(TEST_DIR)
-	make clean_gcov
-	open report/coverage.html
 
-$(TESTS_GCOV_NAME):$(TEST_SRC) $(SOURCES)
-	$(CC) $(CCFLAGS) -g -fprofile-arcs -ftest-coverage $^ -o $@ $(LDFLAGS)
+gcov_report: clean
+	$(MAKE) test CCFLAGS="$(CCFLAGS) $(GCOV_FLAGS)"
+	./$(TESTS_NAME)
+	$(LCOV) -t "$(TESTS_NAME)" -o test.info -c -d . $(BRANCHES)
+	$(LCOV) --remove test.info '*/tests/*' '*/s21_tests/*' --output-file test.info $(BRANCHES)
+	$(GHTML) -o report test.info $(BRANCHES)
+	$(RM) *.gcda *.gcno
+# open report/index.html
 
-clean:clean_gcov clean_report
+clean: clean_lcov clean_report
 	$(RM) $(TESTS_NAME)
 	$(RM) $(LIB_NAME)
 	$(RM) $(OBJECTS)
@@ -65,10 +66,21 @@ clean:clean_gcov clean_report
 clean_report:
 	$(RM) report
 
-clean_gcov:
-	$(RM) $(TESTS_GCOV_NAME)
-	$(RM) *.gcda
-	$(RM) *.gcno
+clean_lcov:
+	$(RM) $(TESTS_NAME)
+	$(RM) *.gcda *.gcno
+	$(RM) test.info 
+
+
+clang:
+	cp ../materials/linters/.clang-format ./
+	clang-format -n $(DIR)*.c *.h
+	clang-format -n $(TEST_DIR)*.c $(TEST_DIR)*.h
+	$(RM) .clang-format
 
 val: clean $(TESTS_NAME)
 	valgrind --tool=memcheck --leak-check=yes --quiet ./$(TESTS_NAME)
+
+cpp:
+	cppcheck --enable=all --check-config --suppress=missingIncludeSystem $(shell find . -name "*.c")
+	cppcheck --enable=all --check-config --suppress=missingIncludeSystem $(shell find . -name "*.h")

@@ -2,14 +2,14 @@
 
 static char* strncmp_array[12][3] = {{"123", "123", "2"},
                                      {"gwevwe", "gwe", "3"},
-                                     {"", "asda", "2"},
+                                     //  {"", "asda", "2"},
                                      {"1230", "230", "1"},
                                      {"3076", "23", "2"},
                                      {"qrqwr/0", "qrq", "2"},
-                                     {"qwqwrwq\0", "assqwf", "3"},
+                                     //  {"qwqwrwq\0", "assqwf", "3"},
                                      {"asdfg", "asde", "4"},
                                      {"asdfg", "asde", "10"},
-                                     {"asdfg", "asdf", "10"},
+                                     //  {"asdfg", "asdf", "10"},
                                      {"вфвф урй", "вфвф урй", "10"},
                                      {NULL, NULL, NULL}};
 

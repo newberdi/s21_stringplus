@@ -27,10 +27,10 @@ int right_side(const char *src, const char *trim_chars, int end) {
 
 void *s21_trim(const char *src, const char *trim_chars) {
   char *src_new = S21_NULL;
+
   if (src) {
     if (trim_chars != S21_NULL && trim_chars[0]) {
-      int size = s21_strlen(src) + 1;
-      src_new = calloc(size, sizeof(char));
+      src_new = calloc(s21_strlen(src) + 1, sizeof(char));
       s21_size_t start = 0;
       s21_size_t end = s21_strlen(src);
       while (left_side(src, trim_chars, start)) {
