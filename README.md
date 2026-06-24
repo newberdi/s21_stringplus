@@ -121,15 +121,3 @@ Generate coverage report:
 ```bash
 make gcov_report
 ```
-
-## Learning Outcomes
-
-This project provided practical experience with:
-
-* memory management in C;
-* string manipulation algorithms;
-* variadic functions (`stdarg.h`);
-* parser and formatter implementation;
-* platform-dependent behavior handling;
-* unit testing and code coverage analysis;
-* library development and API design.
