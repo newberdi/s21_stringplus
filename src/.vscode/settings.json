@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "algorithm": "c",
-        "s21_string.h": "c"
+        "s21_string.h": "c",
+        "functional": "c"
     }
 }

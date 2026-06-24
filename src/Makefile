@@ -15,8 +15,8 @@ GHTML = $(shell which genhtml || echo ~/.local/bin/genhtml)
 LIB_NAME = s21_string.a
 # имя тестового файла
 TESTS_NAME = s21_string_test
-# # имя тестового файла c тестами покрытия кода gcovr
-# TESTS_LCOV_NAME = s21_string_tests_gcov
+# имя тестового файла c тестами покрытия кода gcovr
+TESTS_LCOV_NAME = s21_string_tests_gcov
 
 # файлы и директории функций библиотек
 DIR = ./
